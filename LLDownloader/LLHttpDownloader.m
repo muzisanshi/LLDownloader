@@ -32,20 +32,20 @@ static LLHttpDownloader *instance;
     return [super init];
 }
 // 从字符串url进行下载资源
--(NSString *)downloadFromUrlString:(NSString *)url{
+-(void)downloadFromUrlString:(NSString *)url withDelegate:(id<DownloaderDelegate>)delegate{
     NSLog(@"%@downloadFromUrlString()",self.LOG_TAG);
     if(url){
         NSURL *nsurl = [NSURL URLWithString:url];
-        NSString *filePath = nil;
-        filePath = [self downloadFromUrl:nsurl];
-        return filePath;
+        [self downloadFromUrl:nsurl withDelegate:delegate];
     }else{
         NSLog(@"%@下载地址无效",self.LOG_TAG);
-        return nil;
+        if(delegate){
+            [delegate onDownloadError:@"error"];
+        }
     }
 }
 // 从NSURL进行资源下载
--(NSString *)downloadFromUrl:(NSURL *)url{
+-(void)downloadFromUrl:(NSURL *)url withDelegate:(id<DownloaderDelegate>)delegate{
     NSLog(@"%@downloadFromUrl()",self.LOG_TAG);
     NSString *filePath = nil;
     if(url && [url lastPathComponent]){
@@ -66,6 +66,9 @@ static LLHttpDownloader *instance;
             NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
             if(error){
                 NSLog(@"%@下载失败",self.LOG_TAG);
+                if(delegate){
+                    [delegate onDownloadError:@"error"];
+                }
             }else{
                 NSLog(@"%@%@",self.LOG_TAG,response);
                 NSLog(@"%@下载完成",self.LOG_TAG);
@@ -73,12 +76,17 @@ static LLHttpDownloader *instance;
                 // 往文件写数据
                 [data writeToFile:filePath atomically:TRUE];
                 NSLog(@"%@写入数据到文件完毕",self.LOG_TAG);
+                if(delegate){
+                    [delegate onDownloadOver:filePath];
+                }
             }
         });
         
     }else{
         NSLog(@"%@下载地址无效",self.LOG_TAG);
+        if(delegate){
+            [delegate onDownloadError:@"error"];
+        }
     }
-    return filePath;
 }
 @end

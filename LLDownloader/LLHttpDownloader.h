@@ -9,6 +9,11 @@
 #ifndef LLHttpDownloader_h
 #define LLHttpDownloader_h
 
+@protocol DownloaderDelegate <NSObject>
+-(void)onDownloadOver:(NSString *)msg;
+-(void)onDownloadError:(NSString *)msg;
+@end
+
 @interface LLHttpDownloader : NSObject
 
 @property NSString *LOG_TAG;
@@ -18,9 +23,9 @@
 // 获取单例
 +(LLHttpDownloader *)defaultDownloader;
 // 从字符串url进行下载资源
--(NSString *)downloadFromUrlString:(NSString *)url;
+-(void)downloadFromUrlString:(NSString *)url withDelegate:(id<DownloaderDelegate>)delegate;
 // 从NSURL进行资源下载
--(NSString *)downloadFromUrl:(NSURL *)url;
+-(void)downloadFromUrl:(NSURL *)url withDelegate:(id<DownloaderDelegate>)delegate;
 @end
 
 #endif /* LLHttpDownloader_h */

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A4BEB1A81C47A6240063708D /* LLHttpDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1A71C47A6240063708D /* LLHttpDownloader.m */; };
+		A4BEB1B91C47CC3E0063708D /* README.MD in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1B81C47CC3E0063708D /* README.MD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,7 @@
 		A4BEB1A51C47A5F60063708D /* LLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDownloader.h; sourceTree = "<group>"; };
 		A4BEB1A61C47A6110063708D /* LLHttpDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLHttpDownloader.h; sourceTree = "<group>"; };
 		A4BEB1A71C47A6240063708D /* LLHttpDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLHttpDownloader.m; sourceTree = "<group>"; };
+		A4BEB1B81C47CC3E0063708D /* README.MD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.MD; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 		A4BEB1881C47A3420063708D = {
 			isa = PBXGroup;
 			children = (
+				A4BEB1B81C47CC3E0063708D /* README.MD */,
 				A4BEB1931C47A3420063708D /* LLDownloader */,
 				A4BEB1921C47A3420063708D /* Products */,
 			);
@@ -133,6 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4BEB1B91C47CC3E0063708D /* README.MD in Sources */,
 				A4BEB1A81C47A6240063708D /* LLHttpDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
