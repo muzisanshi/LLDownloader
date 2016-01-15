@@ -21,6 +21,8 @@ static LLHttpDownloader *instance;
 
 -(instancetype)init{
     self.loger = [[LLLoger alloc] initWithClass:[NSString stringWithUTF8String:object_getClassName(self)]];
+    self.networkState = [[LLNetworkState alloc] init];
+    
     BOOL yesBool = YES;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     self.docDir = paths[0];
@@ -34,67 +36,77 @@ static LLHttpDownloader *instance;
 // 从字符串url进行下载资源
 -(void)downloadFromUrlString:(NSString *)url withDelegate:(id<DownloaderDelegate>)delegate{
     [self.loger LLLog:@"downloadFromUrlString()"];
-    if(url){
-        NSURL *nsurl = [NSURL URLWithString:url];
-        [self downloadFromUrl:nsurl withDelegate:delegate];
-    }else{
-        [self.loger LLLog:@"下载地址无效"];
-        if(delegate){
-            [delegate onDownloadError:@"error"];
+    if ([self.networkState isNetworkAvailable]) {
+        if(url){
+            NSURL *nsurl = [NSURL URLWithString:url];
+            [self downloadFromUrl:nsurl withDelegate:delegate];
+        }else{
+            [self.loger LLLog:@"下载地址无效"];
+            if(delegate){
+                [delegate onDownloadError:@"downerror"];
+            }
         }
+    }else{
+        [delegate onNetworkUnavailable:@"neterror"];
     }
 }
 // 从NSURL进行资源下载
 -(void)downloadFromUrl:(NSURL *)url withDelegate:(id<DownloaderDelegate>)delegate{
     [self.loger LLLog:@"downloadFromUrl()"];
     NSString *filePath = nil;
-    if(url && [url lastPathComponent]){
-        // 创建文件
-        filePath = [NSString stringWithFormat:@"%@/%@",self.rootDir,[url lastPathComponent]];
-        if(![[NSFileManager defaultManager] fileExistsAtPath:filePath]){
-            [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
-            [self.loger LLLog:[NSString stringWithFormat:@"创建了下载文件：%@",filePath]];
-        }
-        // 使用同步任务队列，异步任务下载
-        dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0);
-        dispatch_async(globalQueue, ^{
-            // 定义请求(默认是GET方法)
-            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-            NSURLResponse *response = nil;
-            NSError *error = nil;
-            
-            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            
-            if(error){
-                [self.loger LLLog:@"下载失败"];
-                if(delegate){
-                    [delegate onDownloadError:@"error"];
-                }
-            }else{
-                [self.loger LLLog:[NSString stringWithFormat:@"%@",response]];
-                [self.loger LLLog:@"下载完成"];
-                long long length = [response expectedContentLength];
-                [self.loger LLLog:[NSString stringWithFormat:@"下载的文件的大小是：%llu",length]];
-                LLFileOperator *operator = [[LLFileOperator alloc] init];
-                if ([operator isSpaceEnough:length]) {
-                    // 往文件写数据
-                    [data writeToFile:filePath atomically:TRUE];
-                    [self.loger LLLog:@"写入数据到文件完毕"];
+    if ([self.networkState isNetworkAvailable]) {
+        if(url && [url lastPathComponent]){
+            // 创建文件
+            filePath = [NSString stringWithFormat:@"%@/%@",self.rootDir,[url lastPathComponent]];
+            if(![[NSFileManager defaultManager] fileExistsAtPath:filePath]){
+                [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
+                [self.loger LLLog:[NSString stringWithFormat:@"创建了下载文件：%@",filePath]];
+            }
+            // 使用同步任务队列，异步任务下载
+            dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0);
+            dispatch_async(globalQueue, ^{
+                // 定义请求(默认是GET方法)
+                NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+                NSURLResponse *response = nil;
+                NSError *error = nil;
+                
+                NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+                
+                if(error){
+                    [self.loger LLLog:@"下载失败"];
                     if(delegate){
-                        [delegate onDownloadOver:filePath];
+                        [delegate onDownloadError:@"downerror"];
                     }
                 }else{
-                    if(delegate){
-                        [delegate onSpaceNotEnough:@"nenough"];
+                    [self.loger LLLog:[NSString stringWithFormat:@"%@",response]];
+                    [self.loger LLLog:@"下载完成"];
+                    long long length = [response expectedContentLength];
+                    [self.loger LLLog:[NSString stringWithFormat:@"下载的文件的大小是：%llu",length]];
+                    LLFileOperator *operator = [[LLFileOperator alloc] init];
+                    if ([operator isSpaceEnough:length]) {
+                        // 往文件写数据
+                        [data writeToFile:filePath atomically:TRUE];
+                        [self.loger LLLog:@"写入数据到文件完毕"];
+                        if(delegate){
+                            [delegate onDownloadOver:filePath];
+                        }
+                    }else{
+                        if(delegate){
+                            [delegate onSpaceNotEnough:@"nenough"];
+                        }
                     }
                 }
+            });
+            
+        }else{
+            [self.loger LLLog:@"下载地址无效"];
+            if(delegate){
+                [delegate onDownloadError:@"downerror"];
             }
-        });
-        
+        }
     }else{
-        [self.loger LLLog:@"下载地址无效"];
         if(delegate){
-            [delegate onDownloadError:@"error"];
+            [delegate onNetworkUnavailable:@"neterror"];
         }
     }
 }

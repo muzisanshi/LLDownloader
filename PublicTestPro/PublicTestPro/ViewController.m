@@ -50,4 +50,8 @@
     NSLog(@"%@",msg);
     [self performSelectorOnMainThread:@selector(showAlert:) withObject:msg waitUntilDone:YES];
 }
+-(void)onNetworkUnavailable:(NSString *)msg{
+    NSLog(@"%@",msg);
+    [self performSelectorOnMainThread:@selector(showAlert:) withObject:msg waitUntilDone:YES];
+}
 @end

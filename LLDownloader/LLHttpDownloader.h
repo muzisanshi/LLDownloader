@@ -11,11 +11,14 @@
 
 #import "LLFileOperator.h"
 #import "LLLoger.h"
+#import "LLNetworkState.h"
 
 @protocol DownloaderDelegate <NSObject>
+// 网络不可用，msg是neterror
+-(void)onNetworkUnavailable:(NSString *)msg;
 // 下载成功，msg是下载到本地的文件的绝对路径
 -(void)onDownloadOver:(NSString *)msg;
-// 下载失败，msg是error
+// 下载失败，msg是downerror
 -(void)onDownloadError:(NSString *)msg;
 // 下载失败，msg是nenough
 -(void)onSpaceNotEnough:(NSString *)msg;
@@ -24,6 +27,7 @@
 @interface LLHttpDownloader : NSObject
 
 @property LLLoger *loger;
+@property LLNetworkState *networkState;
 @property NSString *rootDir;
 @property NSString *docDir;
 
