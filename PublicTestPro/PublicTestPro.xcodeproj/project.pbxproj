@@ -30,8 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A48D681A1C487DEB00C67744 /* LLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LLDownloader.h; path = ../../LLDownloader/LLDownloader/LLDownloader.h; sourceTree = "<group>"; };
 		A48D682F1C489CDA00C67744 /* libLLDownloader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLLDownloader.a; sourceTree = "<group>"; };
+		A48D68341C48A27C00C67744 /* LLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LLDownloader.h; path = ../../LLDownloader/LLDownloader.h; sourceTree = "<group>"; };
 		A4BEB1611C478E5D0063708D /* PublicTestPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublicTestPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BEB1651C478E5D0063708D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A4BEB1671C478E5D0063708D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,8 +75,8 @@
 		A4BEB1631C478E5D0063708D /* PublicTestPro */ = {
 			isa = PBXGroup;
 			children = (
+				A48D68341C48A27C00C67744 /* LLDownloader.h */,
 				A48D682F1C489CDA00C67744 /* libLLDownloader.a */,
-				A48D681A1C487DEB00C67744 /* LLDownloader.h */,
 				A4BEB1671C478E5D0063708D /* AppDelegate.h */,
 				A4BEB1681C478E5D0063708D /* AppDelegate.m */,
 				A4BEB16A1C478E5D0063708D /* ViewController.h */,
