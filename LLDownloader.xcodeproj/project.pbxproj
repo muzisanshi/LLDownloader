@@ -63,8 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				A4BEB1A51C47A5F60063708D /* LLDownloader.h */,
-				A4BEB1A61C47A6110063708D /* LLHttpDownloader.h */,
 				A4BEB1A71C47A6240063708D /* LLHttpDownloader.m */,
+				A4BEB1A61C47A6110063708D /* LLHttpDownloader.h */,
 			);
 			path = LLDownloader;
 			sourceTree = "<group>";
