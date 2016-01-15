@@ -9,6 +9,9 @@
 #ifndef LLHttpDownloader_h
 #define LLHttpDownloader_h
 
+#import "LLFileOperator.h"
+#import "LLLoger.h"
+
 @protocol DownloaderDelegate <NSObject>
 // 下载成功，msg是下载到本地的文件的绝对路径
 -(void)onDownloadOver:(NSString *)msg;
@@ -20,7 +23,7 @@
 
 @interface LLHttpDownloader : NSObject
 
-@property NSString *LOG_TAG;
+@property LLLoger *loger;
 @property NSString *rootDir;
 @property NSString *docDir;
 

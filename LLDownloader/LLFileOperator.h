@@ -8,8 +8,11 @@
 
 #ifndef LLFileOperator_h
 #define LLFileOperator_h
+#import "LLLoger.h"
 
 @interface LLFileOperator : NSObject
+@property LLLoger *loger;
+
 -(BOOL)isSpaceEnough:(long long)fileLength;
 @end
 
