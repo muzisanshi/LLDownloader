@@ -74,7 +74,7 @@ static LLHttpDownloader *instance;
                 [self.loger LLLog:[NSString stringWithFormat:@"%@",response]];
                 [self.loger LLLog:@"下载完成"];
                 long long length = [response expectedContentLength];
-                [self.loger LLLog:[NSString stringWithFormat:@"要下载的文件的大小是：%llu",length]];
+                [self.loger LLLog:[NSString stringWithFormat:@"下载的文件的大小是：%llu",length]];
                 LLFileOperator *operator = [[LLFileOperator alloc] init];
                 if ([operator isSpaceEnough:length]) {
                     // 往文件写数据
