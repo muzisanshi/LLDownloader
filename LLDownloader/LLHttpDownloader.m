@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LLHttpDownloader.h"
+#import "LLFileOperator.h"
 
 static LLHttpDownloader *instance;
 @implementation LLHttpDownloader
@@ -64,6 +65,7 @@ static LLHttpDownloader *instance;
             NSError *error = nil;
             
             NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            
             if(error){
                 NSLog(@"%@下载失败",self.LOG_TAG);
                 if(delegate){
@@ -72,12 +74,20 @@ static LLHttpDownloader *instance;
             }else{
                 NSLog(@"%@%@",self.LOG_TAG,response);
                 NSLog(@"%@下载完成",self.LOG_TAG);
-                
-                // 往文件写数据
-                [data writeToFile:filePath atomically:TRUE];
-                NSLog(@"%@写入数据到文件完毕",self.LOG_TAG);
-                if(delegate){
-                    [delegate onDownloadOver:filePath];
+                long long length = [response expectedContentLength];
+                NSLog(@"%@要下载的文件的大小是：%llu",self.LOG_TAG,length);
+                LLFileOperator *operator = [[LLFileOperator alloc] init];
+                if ([operator isSpaceEnough:length]) {
+                    // 往文件写数据
+                    [data writeToFile:filePath atomically:TRUE];
+                    NSLog(@"%@写入数据到文件完毕",self.LOG_TAG);
+                    if(delegate){
+                        [delegate onDownloadOver:filePath];
+                    }
+                }else{
+                    if(delegate){
+                        [delegate onSpaceNotEnough:@"nenough"];
+                    }
                 }
             }
         });

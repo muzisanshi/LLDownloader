@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A48D681F1C4880CB00C67744 /* LLFileOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = A48D681E1C4880CB00C67744 /* LLFileOperator.m */; };
 		A4BEB1A81C47A6240063708D /* LLHttpDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1A71C47A6240063708D /* LLHttpDownloader.m */; };
 		A4BEB1B91C47CC3E0063708D /* README.MD in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1B81C47CC3E0063708D /* README.MD */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A48D681D1C4880BA00C67744 /* LLFileOperator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLFileOperator.h; sourceTree = "<group>"; };
+		A48D681E1C4880CB00C67744 /* LLFileOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFileOperator.m; sourceTree = "<group>"; };
 		A4BEB1911C47A3420063708D /* libLLDownloader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLLDownloader.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BEB1A51C47A5F60063708D /* LLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDownloader.h; sourceTree = "<group>"; };
 		A4BEB1A61C47A6110063708D /* LLHttpDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLHttpDownloader.h; sourceTree = "<group>"; };
@@ -65,6 +68,8 @@
 				A4BEB1A51C47A5F60063708D /* LLDownloader.h */,
 				A4BEB1A71C47A6240063708D /* LLHttpDownloader.m */,
 				A4BEB1A61C47A6110063708D /* LLHttpDownloader.h */,
+				A48D681D1C4880BA00C67744 /* LLFileOperator.h */,
+				A48D681E1C4880CB00C67744 /* LLFileOperator.m */,
 			);
 			path = LLDownloader;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4BEB1B91C47CC3E0063708D /* README.MD in Sources */,
+				A48D681F1C4880CB00C67744 /* LLFileOperator.m in Sources */,
 				A4BEB1A81C47A6240063708D /* LLHttpDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +267,7 @@
 				A4BEB19C1C47A3420063708D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

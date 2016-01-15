@@ -10,10 +10,12 @@
 #define LLHttpDownloader_h
 
 @protocol DownloaderDelegate <NSObject>
-// 下载成功，msg是下载到本地的文件的URL，是fill://开头的
+// 下载成功，msg是下载到本地的文件的绝对路径
 -(void)onDownloadOver:(NSString *)msg;
 // 下载失败，msg是error
 -(void)onDownloadError:(NSString *)msg;
+// 下载失败，msg是nenough
+-(void)onSpaceNotEnough:(NSString *)msg;
 @end
 
 @interface LLHttpDownloader : NSObject
