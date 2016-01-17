@@ -116,10 +116,10 @@ static LLHttpDownloader *instance;
                     }
                     
                 }else{
+                    [self.loger LLLog:@"当前不进行断点下载"];
                     // 定义请求(默认是GET方法)
                     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-                    [self.loger LLLog:@"当前不进行断点下载"];
-                     NSData *data2 = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+                    NSData *data2 = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
                     if(error){
                         [self.loger LLLog:@"下载失败"];
                         if(delegate){
