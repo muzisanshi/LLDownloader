@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +36,7 @@
 //    HttpDownloader *downloader = [[HttpDownloader alloc] init];
     NSString *url = @"http://download.handsight.cn/tvhelper.apk";
     LLHttpDownloader *downloader = [LLHttpDownloader defaultDownloader];
-    [downloader downloadFromUrlString:url withDelegate:self];
+    [downloader downloadFromUrlString:url withDelegate:self isResume:YES];
 }
 
 -(void)onDownloadError:(NSString *)msg{

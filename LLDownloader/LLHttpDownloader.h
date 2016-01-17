@@ -34,9 +34,9 @@
 // 获取单例
 +(LLHttpDownloader *)defaultDownloader;
 // 从字符串url进行下载资源
--(void)downloadFromUrlString:(NSString *)url withDelegate:(id<DownloaderDelegate>)delegate;
+-(void)downloadFromUrlString:(NSString *)url withDelegate:(id<DownloaderDelegate>)delegate isResume:(BOOL)flag;
 // 从NSURL进行资源下载
--(void)downloadFromUrl:(NSURL *)url withDelegate:(id<DownloaderDelegate>)delegate;
+-(void)downloadFromUrl:(NSURL *)url withDelegate:(id<DownloaderDelegate>)delegate isResume:(BOOL)flag;
 @end
 
 #endif /* LLHttpDownloader_h */

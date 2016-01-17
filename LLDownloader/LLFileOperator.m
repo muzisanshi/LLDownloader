@@ -30,4 +30,15 @@
     }
     return NO;
 }
+
+-(long long)getFileLength:(NSString *)filePath{
+    [self.loger LLLog:@"获取文件大小"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
+    }
+    // 获取文件大小（字节）
+    long long sizeByte = [[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil] fileSize];
+    [self.loger LLLog:[NSString stringWithFormat:@"当前文件的大小是：%llu",sizeByte]];
+    return sizeByte;
+}
 @end

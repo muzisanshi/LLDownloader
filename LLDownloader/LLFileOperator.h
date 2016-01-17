@@ -14,6 +14,7 @@
 @property LLLoger *loger;
 
 -(BOOL)isSpaceEnough:(long long)fileLength;
+-(long long)getFileLength:(NSString *)filePath;
 @end
 
 #endif /* LLFileOperator_h */

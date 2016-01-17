@@ -27,6 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		189D7D1C1C4BCAD300F41ABB /* LLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDownloader.h; sourceTree = "<group>"; };
 		A48D681D1C4880BA00C67744 /* LLFileOperator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLFileOperator.h; sourceTree = "<group>"; };
 		A48D681E1C4880CB00C67744 /* LLFileOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFileOperator.m; sourceTree = "<group>"; };
 		A48D682A1C48957500C67744 /* LLLoger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLLoger.h; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		A48D68351C48C1E500C67744 /* LLNetworkState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLNetworkState.h; sourceTree = "<group>"; };
 		A48D68361C48C1F600C67744 /* LLNetworkState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLNetworkState.m; sourceTree = "<group>"; };
 		A4BEB1911C47A3420063708D /* libLLDownloader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLLDownloader.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4BEB1A51C47A5F60063708D /* LLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDownloader.h; sourceTree = "<group>"; };
 		A4BEB1A61C47A6110063708D /* LLHttpDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLHttpDownloader.h; sourceTree = "<group>"; };
 		A4BEB1A71C47A6240063708D /* LLHttpDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLHttpDownloader.m; sourceTree = "<group>"; };
 		A4BEB1B81C47CC3E0063708D /* README.MD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.MD; sourceTree = "<group>"; };
@@ -71,7 +71,6 @@
 		A4BEB1931C47A3420063708D /* LLDownloader */ = {
 			isa = PBXGroup;
 			children = (
-				A4BEB1A51C47A5F60063708D /* LLDownloader.h */,
 				A4BEB1A71C47A6240063708D /* LLHttpDownloader.m */,
 				A4BEB1A61C47A6110063708D /* LLHttpDownloader.h */,
 				A48D681D1C4880BA00C67744 /* LLFileOperator.h */,
@@ -80,6 +79,7 @@
 				A48D682B1C48958000C67744 /* LLLoger.m */,
 				A48D68351C48C1E500C67744 /* LLNetworkState.h */,
 				A48D68361C48C1F600C67744 /* LLNetworkState.m */,
+				189D7D1C1C4BCAD300F41ABB /* LLDownloader.h */,
 			);
 			path = LLDownloader;
 			sourceTree = "<group>";

@@ -17,6 +17,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // 设置窗口为白色
+    if (self.window) {
+        NSLog(@"窗口不为nil");
+        [self.window setBackgroundColor:[UIColor whiteColor]];
+    }else{
+        NSLog(@"窗口为nil");
+    }
+    
     return YES;
 }
 

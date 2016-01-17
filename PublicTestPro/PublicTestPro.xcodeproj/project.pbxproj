@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A48D683D1C48CEC300C67744 /* libLLDownloader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A48D683C1C48CEC300C67744 /* libLLDownloader.a */; };
+		189D7D251C4BD4CE00F41ABB /* libLLDownloader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 189D7D241C4BD4CE00F41ABB /* libLLDownloader.a */; };
 		A4BEB1661C478E5D0063708D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1651C478E5D0063708D /* main.m */; };
 		A4BEB1691C478E5D0063708D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1681C478E5D0063708D /* AppDelegate.m */; };
 		A4BEB16C1C478E5D0063708D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB16B1C478E5D0063708D /* ViewController.m */; };
 		A4BEB16F1C478E5D0063708D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4BEB16D1C478E5D0063708D /* Main.storyboard */; };
 		A4BEB1711C478E5D0063708D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4BEB1701C478E5D0063708D /* Assets.xcassets */; };
-		A4BEB1741C478E5D0063708D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4BEB1721C478E5D0063708D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,8 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A48D68341C48A27C00C67744 /* LLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LLDownloader.h; path = ../../LLDownloader/LLDownloader.h; sourceTree = "<group>"; };
-		A48D683C1C48CEC300C67744 /* libLLDownloader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLLDownloader.a; sourceTree = "<group>"; };
+		189D7D1D1C4BCB2F00F41ABB /* LLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LLDownloader.h; path = ../../LLDownloader/LLDownloader.h; sourceTree = "<group>"; };
+		189D7D241C4BD4CE00F41ABB /* libLLDownloader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLLDownloader.a; sourceTree = "<group>"; };
 		A4BEB1611C478E5D0063708D /* PublicTestPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublicTestPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BEB1651C478E5D0063708D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A4BEB1671C478E5D0063708D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,7 +39,6 @@
 		A4BEB16B1C478E5D0063708D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A4BEB16E1C478E5D0063708D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A4BEB1701C478E5D0063708D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A4BEB1731C478E5D0063708D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4BEB1751C478E5D0063708D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A48D683D1C48CEC300C67744 /* libLLDownloader.a in Frameworks */,
+				189D7D251C4BD4CE00F41ABB /* libLLDownloader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,15 +73,14 @@
 		A4BEB1631C478E5D0063708D /* PublicTestPro */ = {
 			isa = PBXGroup;
 			children = (
-				A48D683C1C48CEC300C67744 /* libLLDownloader.a */,
-				A48D68341C48A27C00C67744 /* LLDownloader.h */,
+				189D7D241C4BD4CE00F41ABB /* libLLDownloader.a */,
+				189D7D1D1C4BCB2F00F41ABB /* LLDownloader.h */,
 				A4BEB1671C478E5D0063708D /* AppDelegate.h */,
 				A4BEB1681C478E5D0063708D /* AppDelegate.m */,
 				A4BEB16A1C478E5D0063708D /* ViewController.h */,
 				A4BEB16B1C478E5D0063708D /* ViewController.m */,
 				A4BEB16D1C478E5D0063708D /* Main.storyboard */,
 				A4BEB1701C478E5D0063708D /* Assets.xcassets */,
-				A4BEB1721C478E5D0063708D /* LaunchScreen.storyboard */,
 				A4BEB1751C478E5D0063708D /* Info.plist */,
 				A4BEB1641C478E5D0063708D /* Supporting Files */,
 			);
@@ -157,7 +154,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4BEB1741C478E5D0063708D /* LaunchScreen.storyboard in Resources */,
 				A4BEB1711C478E5D0063708D /* Assets.xcassets in Resources */,
 				A4BEB16F1C478E5D0063708D /* Main.storyboard in Resources */,
 			);
@@ -185,14 +181,6 @@
 				A4BEB16E1C478E5D0063708D /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A4BEB1721C478E5D0063708D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A4BEB1731C478E5D0063708D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -290,7 +278,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PublicTestPro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/PublicTestPro";
 				OTHER_LDFLAGS = "-ObjC";
@@ -308,7 +296,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PublicTestPro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/PublicTestPro";
 				OTHER_LDFLAGS = "-ObjC";
