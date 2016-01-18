@@ -94,16 +94,20 @@ static LLHttpDownloader *instance;
                         [self.loger LLLog:[NSString stringWithFormat:@"断点下载的大小是：%llu",length1]];
                         // 把数据写到文件
                         if ([operator isSpaceEnough:length1]) {
-                            // 往文件写数据
-//                            [data1 writeToFile:filePath atomically:TRUE];
                             FILE *file = fopen([filePath UTF8String], [@"ab+" UTF8String]);
                             if(file != NULL){
-                                fseek(file, 0, SEEK_END);
+                                [self.loger LLLog:@"打开文件成功"];
+                                if(fseek(file, 0, SEEK_END) == 0){
+                                    [self.loger LLLog:@"重置文件指针成功"];
+                                }else{
+                                    [self.loger LLLog:@"重置文件指针失败"];
+                                }
                             }
                             unsigned long readSize = [data1 length];
                             fwrite((const void *)[data1 bytes], readSize, 1, file);
                             fclose(file);
                             
+                            NSLog(@"下载后文件的大小是：%llu",[operator getFileLength:filePath]);
                             [self.loger LLLog:@"写入数据到文件完毕"];
                             if(delegate){
                                 [delegate onDownloadOver:filePath];

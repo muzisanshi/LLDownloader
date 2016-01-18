@@ -4,83 +4,29 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
+		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mcAJWzYIJKuk9mIS98MUNQRTvgI=
+			l9SA4rmMOjm/KsakvAGX35Z/Zzk=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
+		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n2t8gsDpfE6XkhG31p7IQJRxTxU=
+			MDrKFvFWroTb0+KEbQShBcoBvo4=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
+		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lIYDEuMzV0G2AWcLHPY3e7xcWJc=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC~iphone.nib/objects-8.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			IJ1XVj3LoFwIcg+jSaKyoDYtm4k=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC~iphone.nib/objects.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			SOTMFkLncowzyoUEGx88wAVxP0o=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC~iphone.nib/runtime.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			AhAIxjdCj12y2hpzjTWCoIVa0mc=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r~iphone.nib/objects-8.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			be2FuGMcSgDIBrQDwKszxd2vzdo=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r~iphone.nib/objects.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			WW6yxJqdnaU4e9K3GQ+naXcm95c=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r~iphone.nib/runtime.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			rZJ9qCmur+iITL+0QxCshAaO+NI=
+			QuMqNO+IlPYEYyGbX2tTkJqACYY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -105,7 +51,7 @@
 		</dict>
 		<key>Info.plist</key>
 		<data>
-		TkF3RlG6uuuyVjs0ZOG3C0vY2JM=
+		qDUJq9Div/qlEBd3yjjXivRjzQk=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -118,83 +64,29 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
+		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mcAJWzYIJKuk9mIS98MUNQRTvgI=
+			l9SA4rmMOjm/KsakvAGX35Z/Zzk=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
+		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n2t8gsDpfE6XkhG31p7IQJRxTxU=
+			MDrKFvFWroTb0+KEbQShBcoBvo4=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
+		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lIYDEuMzV0G2AWcLHPY3e7xcWJc=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC~iphone.nib/objects-8.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			IJ1XVj3LoFwIcg+jSaKyoDYtm4k=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC~iphone.nib/objects.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			SOTMFkLncowzyoUEGx88wAVxP0o=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC~iphone.nib/runtime.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			AhAIxjdCj12y2hpzjTWCoIVa0mc=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r~iphone.nib/objects-8.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			be2FuGMcSgDIBrQDwKszxd2vzdo=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r~iphone.nib/objects.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			WW6yxJqdnaU4e9K3GQ+naXcm95c=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r~iphone.nib/runtime.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			rZJ9qCmur+iITL+0QxCshAaO+NI=
+			QuMqNO+IlPYEYyGbX2tTkJqACYY=
 			</data>
 			<key>optional</key>
 			<true/>

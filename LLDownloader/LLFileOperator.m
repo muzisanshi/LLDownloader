@@ -33,7 +33,7 @@
 
 -(long long)getFileLength:(NSString *)filePath{
     [self.loger LLLog:@"获取文件大小"];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
     }
     // 获取文件大小（字节）

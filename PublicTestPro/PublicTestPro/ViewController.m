@@ -34,7 +34,7 @@
 
 - (IBAction)test:(id)sender {
 //    HttpDownloader *downloader = [[HttpDownloader alloc] init];
-    NSString *url = @"http://download.handsight.cn/tvhelper.apk";
+    NSString *url = @"http://download.handsight.cn/TvHelper_S2.zip";
     LLHttpDownloader *downloader = [LLHttpDownloader defaultDownloader];
     [downloader downloadFromUrlString:url withDelegate:self isResume:YES];
 }
