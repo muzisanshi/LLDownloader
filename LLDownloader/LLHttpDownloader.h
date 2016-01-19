@@ -24,8 +24,9 @@
 -(void)onSpaceNotEnough:(NSString *)msg;
 @end
 
-@interface LLHttpDownloader : NSObject
+@interface LLHttpDownloader : NSObject <NSURLConnectionDataDelegate>
 
+@property NSURLConnection *connection;
 @property LLLoger *loger;
 @property LLNetworkState *networkState;
 @property NSString *rootDir;

@@ -19,6 +19,21 @@ static LLHttpDownloader *instance;
     return instance;
 }
 
+// 实现NSURLConnectionDataDelegate的函数
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    [self.loger LLLog:@"收到了HTTP响应报文"];
+}
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    [self.loger LLLog:@"收到了数据"];
+}
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    [self.loger LLLog:@"HTTP连接出错"];
+}
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    [self.loger LLLog:@"HTTP数据加载完毕"];
+}
+
+
 -(instancetype)init{
     self.loger = [[LLLoger alloc] initWithClass:[NSString stringWithUTF8String:object_getClassName(self)]];
     self.networkState = [[LLNetworkState alloc] init];
@@ -79,45 +94,47 @@ static LLHttpDownloader *instance;
                     long long fileSize = [operator getFileLength:filePath];
                     [mutRequest setValue:[NSString stringWithFormat:@"bytes=%llu-",fileSize] forHTTPHeaderField:@"Range"];
                     [mutRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-                    NSData *data1 = [NSURLConnection sendSynchronousRequest:mutRequest returningResponse:&response error:&error];
-                    
-                    if (error) {
-                        [self.loger LLLog:@"断点下载失败"];
-                        if(delegate){
-                            [delegate onDownloadError:@"downerror"];
-                        }
+                    self.connection = [[NSURLConnection alloc] initWithRequest:mutRequest delegate:self];
 
-                    }else{
-                        
-                        [self.loger LLLog:@"断点下载文件结束"];
-                        long long length1 = [response expectedContentLength];
-                        [self.loger LLLog:[NSString stringWithFormat:@"断点下载的大小是：%llu",length1]];
-                        // 把数据写到文件
-                        if ([operator isSpaceEnough:length1]) {
-                            FILE *file = fopen([filePath UTF8String], [@"ab+" UTF8String]);
-                            if(file != NULL){
-                                [self.loger LLLog:@"打开文件成功"];
-                                if(fseek(file, 0, SEEK_END) == 0){
-                                    [self.loger LLLog:@"重置文件指针成功"];
-                                }else{
-                                    [self.loger LLLog:@"重置文件指针失败"];
-                                }
-                            }
-                            unsigned long readSize = [data1 length];
-                            fwrite((const void *)[data1 bytes], readSize, 1, file);
-                            fclose(file);
-                            
-                            NSLog(@"下载后文件的大小是：%llu",[operator getFileLength:filePath]);
-                            [self.loger LLLog:@"写入数据到文件完毕"];
-                            if(delegate){
-                                [delegate onDownloadOver:filePath];
-                            }
-                        }else{
-                            if(delegate){
-                                [delegate onSpaceNotEnough:@"nenough"];
-                            }
-                        }
-                    }
+//                    NSData *data1 = [NSURLConnection sendSynchronousRequest:mutRequest returningResponse:&response error:&error];
+//                    
+//                    if (error) {
+//                        [self.loger LLLog:@"断点下载失败"];
+//                        if(delegate){
+//                            [delegate onDownloadError:@"downerror"];
+//                        }
+//
+//                    }else{
+//                        
+//                        [self.loger LLLog:@"断点下载文件结束"];
+//                        long long length1 = [response expectedContentLength];
+//                        [self.loger LLLog:[NSString stringWithFormat:@"断点下载的大小是：%llu",length1]];
+//                        // 把数据写到文件
+//                        if ([operator isSpaceEnough:length1]) {
+//                            FILE *file = fopen([filePath UTF8String], [@"ab+" UTF8String]);
+//                            if(file != NULL){
+//                                [self.loger LLLog:@"打开文件成功"];
+//                                if(fseek(file, 0, SEEK_END) == 0){
+//                                    [self.loger LLLog:@"重置文件指针成功"];
+//                                }else{
+//                                    [self.loger LLLog:@"重置文件指针失败"];
+//                                }
+//                            }
+//                            unsigned long readSize = [data1 length];
+//                            fwrite((const void *)[data1 bytes], readSize, 1, file);
+//                            fclose(file);
+//                            
+//                            NSLog(@"下载后文件的大小是：%llu",[operator getFileLength:filePath]);
+//                            [self.loger LLLog:@"写入数据到文件完毕"];
+//                            if(delegate){
+//                                [delegate onDownloadOver:filePath];
+//                            }
+//                        }else{
+//                            if(delegate){
+//                                [delegate onSpaceNotEnough:@"nenough"];
+//                            }
+//                        }
+//                    }
                     
                 }else{
                     [self.loger LLLog:@"当前不进行断点下载"];
