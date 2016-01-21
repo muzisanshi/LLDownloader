@@ -95,6 +95,7 @@ static LLHttpDownloader *instance;
                     [mutRequest setValue:[NSString stringWithFormat:@"bytes=%llu-",fileSize] forHTTPHeaderField:@"Range"];
                     [mutRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
                     self.connection = [[NSURLConnection alloc] initWithRequest:mutRequest delegate:self];
+                    [self.connection start];
 
 //                    NSData *data1 = [NSURLConnection sendSynchronousRequest:mutRequest returningResponse:&response error:&error];
 //                    

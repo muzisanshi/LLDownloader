@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		189D7D291C4D31CD00F41ABB /* libLLDownloader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 189D7D281C4D31CD00F41ABB /* libLLDownloader.a */; };
+		A467F7A91C50E9A300FFF298 /* libLLDownloader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A467F7A81C50E9A300FFF298 /* libLLDownloader.a */; };
 		A4BEB1661C478E5D0063708D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1651C478E5D0063708D /* main.m */; };
 		A4BEB1691C478E5D0063708D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1681C478E5D0063708D /* AppDelegate.m */; };
 		A4BEB16C1C478E5D0063708D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB16B1C478E5D0063708D /* ViewController.m */; };
@@ -30,7 +30,7 @@
 
 /* Begin PBXFileReference section */
 		189D7D1D1C4BCB2F00F41ABB /* LLDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LLDownloader.h; path = ../../LLDownloader/LLDownloader.h; sourceTree = "<group>"; };
-		189D7D281C4D31CD00F41ABB /* libLLDownloader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLLDownloader.a; sourceTree = "<group>"; };
+		A467F7A81C50E9A300FFF298 /* libLLDownloader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLLDownloader.a; sourceTree = "<group>"; };
 		A4BEB1611C478E5D0063708D /* PublicTestPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublicTestPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4BEB1651C478E5D0063708D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A4BEB1671C478E5D0063708D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				189D7D291C4D31CD00F41ABB /* libLLDownloader.a in Frameworks */,
+				A467F7A91C50E9A300FFF298 /* libLLDownloader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +73,7 @@
 		A4BEB1631C478E5D0063708D /* PublicTestPro */ = {
 			isa = PBXGroup;
 			children = (
-				189D7D281C4D31CD00F41ABB /* libLLDownloader.a */,
+				A467F7A81C50E9A300FFF298 /* libLLDownloader.a */,
 				189D7D1D1C4BCB2F00F41ABB /* LLDownloader.h */,
 				A4BEB1671C478E5D0063708D /* AppDelegate.h */,
 				A4BEB1681C478E5D0063708D /* AppDelegate.m */,
