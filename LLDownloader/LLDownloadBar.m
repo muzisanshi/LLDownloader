@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UIDownloadBar.h"
+#import "LLDownloadBar.h"
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 
-@implementation UIDownloadBar
+@implementation LLDownloadBar
 @synthesize percentComplete;
 
-- (UIDownloadBar *)initWithFrame:(CGRect)frame{
+- (LLDownloadBar *)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     self.loger = [[LLLoger alloc] initWithClass:[NSString stringWithUTF8String:object_getClassName(self)]];
     if(self) {

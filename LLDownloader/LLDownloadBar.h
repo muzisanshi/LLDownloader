@@ -22,7 +22,7 @@
 #import <UIKit/UIKit.h>
 #import "LLLoger.h"
 
-@interface UIDownloadBar : UIView {
+@interface LLDownloadBar : UIView {
     UIProgressView *progressView;
     NSURLRequest* DownloadRequest;
     NSURLConnection* DownloadConnection;

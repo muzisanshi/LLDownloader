@@ -12,7 +12,7 @@
 #import "LLFileOperator.h"
 #import "LLLoger.h"
 #import "LLNetworkState.h"
-#import "UIDownloadBar.h"
+#import "LLDownloadBar.h"
 
 @protocol DownloaderDelegate <NSObject>
 // 网络不可用，msg是neterror
@@ -36,7 +36,7 @@
 @property id<DownloaderDelegate> delegate;
 @property LLFileOperator *fileOperator;
 @property FILE *file;
-@property UIDownloadBar *bar;
+@property LLDownloadBar *bar;
 @property unsigned long long totalLenth;
 
 // 获取单例
@@ -46,7 +46,7 @@
 // 从NSURL进行资源下载
 -(void)downloadFromUrl:(NSURL *)url withDelegate:(id<DownloaderDelegate>)delegate isResume:(BOOL)flag;
 // 初始化下载进度框
--(instancetype)initWithBar:(UIDownloadBar *) bar;
+-(instancetype)initWithBar:(LLDownloadBar *) bar;
 @end
 
 #endif /* LLHttpDownloader_h */

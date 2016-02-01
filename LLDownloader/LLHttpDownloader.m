@@ -92,7 +92,7 @@
     return [super init];
 }
 
--(instancetype)initWithBar:(UIDownloadBar *) bar{
+-(instancetype)initWithBar:(LLDownloadBar *) bar{
     self.bar = bar;
     self.loger = [[LLLoger alloc] initWithClass:[NSString stringWithUTF8String:object_getClassName(self)]];
     self.networkState = [[LLNetworkState alloc] init];
