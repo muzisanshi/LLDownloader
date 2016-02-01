@@ -11,6 +11,7 @@
 
 @interface ViewController () <DownloaderDelegate>
 - (IBAction)test:(id)sender;
+- (IBAction)asyncTest:(id)sender;
 
 @end
 
@@ -35,8 +36,12 @@
 - (IBAction)test:(id)sender {
 //    HttpDownloader *downloader = [[HttpDownloader alloc] init];
     NSString *url = @"http://download.handsight.cn/tvhelper.apk";
-    LLHttpDownloader *downloader = [LLHttpDownloader defaultDownloader];
+    LLHttpDownloader *downloader = [[LLHttpDownloader alloc] init];
     [downloader downloadFromUrlString:url withDelegate:self isResume:YES];
+}
+
+- (IBAction)asyncTest:(id)sender {
+    NSLog(@"点击了异步按钮");
 }
 
 -(void)onDownloadError:(NSString *)msg{

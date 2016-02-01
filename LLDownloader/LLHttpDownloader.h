@@ -31,9 +31,13 @@
 @property LLNetworkState *networkState;
 @property NSString *rootDir;
 @property NSString *docDir;
+@property NSString *filePath;
+@property id<DownloaderDelegate> delegate;
+@property LLFileOperator *fileOperator;
+@property FILE *file;
 
 // 获取单例
-+(LLHttpDownloader *)defaultDownloader;
+//+(LLHttpDownloader *)defaultDownloader;
 // 从字符串url进行下载资源
 -(void)downloadFromUrlString:(NSString *)url withDelegate:(id<DownloaderDelegate>)delegate isResume:(BOOL)flag;
 // 从NSURL进行资源下载
