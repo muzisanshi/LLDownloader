@@ -12,6 +12,7 @@
 		A48D68371C48C1F600C67744 /* LLNetworkState.m in Sources */ = {isa = PBXBuildFile; fileRef = A48D68361C48C1F600C67744 /* LLNetworkState.m */; };
 		A4BEB1A81C47A6240063708D /* LLHttpDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1A71C47A6240063708D /* LLHttpDownloader.m */; };
 		A4BEB1B91C47CC3E0063708D /* README.MD in Sources */ = {isa = PBXBuildFile; fileRef = A4BEB1B81C47CC3E0063708D /* README.MD */; };
+		A4EA02381C5F3800001C9BF8 /* UIDownloadBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EA02371C5F3800001C9BF8 /* UIDownloadBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,8 @@
 		A4BEB1A61C47A6110063708D /* LLHttpDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLHttpDownloader.h; sourceTree = "<group>"; };
 		A4BEB1A71C47A6240063708D /* LLHttpDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLHttpDownloader.m; sourceTree = "<group>"; };
 		A4BEB1B81C47CC3E0063708D /* README.MD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.MD; sourceTree = "<group>"; };
+		A4EA02371C5F3800001C9BF8 /* UIDownloadBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDownloadBar.m; sourceTree = "<group>"; };
+		A4EA02391C5F381E001C9BF8 /* UIDownloadBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDownloadBar.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				A48D68351C48C1E500C67744 /* LLNetworkState.h */,
 				A48D68361C48C1F600C67744 /* LLNetworkState.m */,
 				189D7D1C1C4BCAD300F41ABB /* LLDownloader.h */,
+				A4EA02371C5F3800001C9BF8 /* UIDownloadBar.m */,
+				A4EA02391C5F381E001C9BF8 /* UIDownloadBar.h */,
 			);
 			path = LLDownloader;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				A4BEB1B91C47CC3E0063708D /* README.MD in Sources */,
 				A48D681F1C4880CB00C67744 /* LLFileOperator.m in Sources */,
 				A4BEB1A81C47A6240063708D /* LLHttpDownloader.m in Sources */,
+				A4EA02381C5F3800001C9BF8 /* UIDownloadBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

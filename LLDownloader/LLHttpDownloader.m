@@ -23,10 +23,8 @@
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     [self.loger LLLog:@"收到了HTTP响应报文"];
     long long length = [response expectedContentLength];
+    self.totalLenth = length;
     [self.loger LLLog:[NSString stringWithFormat:@"断点下载的大小是：%llu",length]];
-    if (!self.fileOperator) {
-        self.fileOperator = [[LLFileOperator alloc] init];
-    }
     
     if ([self.fileOperator isSpaceEnough:length]) {
         if (!self.file) {
@@ -37,6 +35,7 @@
         if (self.connection) {
             [self.connection cancel];
             [self.loger LLLog:@"下载已经退出"];
+            [self.delegate onSpaceNotEnough:@"nenough"];
         }
     }
 }
@@ -50,8 +49,17 @@
             [self.loger LLLog:@"重置文件指针失败"];
         }
     }
-    unsigned long readSize = [data length];
+    unsigned long long readSize = [data length];
     fwrite((const void *)[data bytes], readSize, 1, self.file);
+    
+    // 回调更新UIDownloadBar的函数
+    if (self.bar) {
+        // 不阻塞主线程的方式更新界面
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.bar updateView:readSize totalLength:self.totalLenth];
+            [self.loger LLLog:@"更新了界面"];
+        });
+    }
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     [self.loger LLLog:@"HTTP连接出错"];
@@ -83,6 +91,23 @@
     }
     return [super init];
 }
+
+-(instancetype)initWithBar:(UIDownloadBar *) bar{
+    self.bar = bar;
+    self.loger = [[LLLoger alloc] initWithClass:[NSString stringWithUTF8String:object_getClassName(self)]];
+    self.networkState = [[LLNetworkState alloc] init];
+    
+    BOOL yesBool = YES;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    self.docDir = paths[0];
+    self.rootDir = [NSString stringWithFormat:@"%@/LLDownloader",self.docDir];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:self.rootDir isDirectory:&yesBool]) {
+        [self.loger LLLog:@"创建LLDownloader目录"];
+        [[NSFileManager defaultManager] createDirectoryAtPath:self.rootDir withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return [super init];
+}
+
 // 从字符串url进行下载资源
 -(void)downloadFromUrlString:(NSString *)url withDelegate:(id<DownloaderDelegate>)delegate isResume:(BOOL)flag{
     [self.loger LLLog:@"downloadFromUrlString()"];
@@ -104,7 +129,6 @@
 -(void)downloadFromUrl:(NSURL *)url withDelegate:(id<DownloaderDelegate>)delegate isResume:(BOOL)flag{
     [self.loger LLLog:@"downloadFromUrl()"];
     self.delegate = delegate;
-//    NSString *filePath = nil;
     if ([self.networkState isNetworkAvailable]) {
         if(url && [url lastPathComponent]){
             // 创建文件
@@ -113,33 +137,33 @@
                 [[NSFileManager defaultManager] createFileAtPath:self.filePath contents:nil attributes:nil];
                 [self.loger LLLog:[NSString stringWithFormat:@"创建了下载文件：%@",self.filePath]];
             }
-            // 使用同步任务队列，异步任务下载
-//            dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0);
-//            dispatch_async(globalQueue, ^{
             
-                LLFileOperator *operator = [[LLFileOperator alloc] init];
-                NSURLResponse *response = nil;
-                NSError *error = nil;
-                
-                // 判断是否是断点下载
-                if (flag) {
-                    [self.loger LLLog:@"当前进行断点下载"];
-                    // 定义请求(默认是GET方法)
-                    NSMutableURLRequest *mutRequest = [NSMutableURLRequest requestWithURL:url];
+            self.fileOperator = [[LLFileOperator alloc] init];
+            
+            // 判断是否是断点下载
+            if (flag) {
+                [self.loger LLLog:@"当前进行断点下载"];
+                // 定义请求(默认是GET方法)
+                NSMutableURLRequest *mutRequest = [NSMutableURLRequest requestWithURL:url];
                     
-                    //获取当前文件的大小
-                    long long fileSize = [operator getFileLength:self.filePath];
-                    [mutRequest setHTTPMethod:@"GET"];
-                    [mutRequest setValue:[NSString stringWithFormat:@"bytes=%llu-",fileSize] forHTTPHeaderField:@"Range"];
-                    [mutRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-                    // 下面这行代码本来就是异步操作
-                    self.connection = [[NSURLConnection alloc] initWithRequest:mutRequest delegate:self];
+                //获取当前文件的大小
+                long long fileSize = [self.fileOperator getFileLength:self.filePath];
+                [mutRequest setHTTPMethod:@"GET"];
+                [mutRequest setValue:[NSString stringWithFormat:@"bytes=%llu-",fileSize] forHTTPHeaderField:@"Range"];
+                [mutRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+                // 下面这行代码本来就是异步操作
+                self.connection = [[NSURLConnection alloc] initWithRequest:mutRequest delegate:self];
                     
-                }else{
-                    [self.loger LLLog:@"当前不进行断点下载"];
+            }else{
+                [self.loger LLLog:@"当前不进行断点下载"];
+                // 使用同步任务队列，异步任务下载
+                dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0);
+                dispatch_async(globalQueue, ^{
                     // 定义请求(默认是GET方法)
                     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-                    NSData *data2 = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+                    NSURLResponse *response = nil;
+                    NSError *error = nil;
+                    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
                     if(error){
                         [self.loger LLLog:@"下载失败"];
                         if(delegate){
@@ -148,12 +172,12 @@
                     }else{
                         [self.loger LLLog:[NSString stringWithFormat:@"%@",response]];
                         [self.loger LLLog:@"下载完成"];
-                        long long length2 = [response expectedContentLength];
-                        [self.loger LLLog:[NSString stringWithFormat:@"下载的文件的大小是：%llu",length2]];
+                        long long length = [response expectedContentLength];
+                        [self.loger LLLog:[NSString stringWithFormat:@"下载的文件的大小是：%llu",length]];
             
-                        if ([operator isSpaceEnough:length2]) {
+                        if ([self.fileOperator isSpaceEnough:length]) {
                             // 往文件写数据
-                            [data2 writeToFile:self.filePath atomically:TRUE];
+                            [data writeToFile:self.filePath atomically:TRUE];
                             [self.loger LLLog:@"写入数据到文件完毕"];
                             if(delegate){
                                 [delegate onDownloadOver:self.filePath];
@@ -164,9 +188,8 @@
                             }
                         }
                     }
-                }
-//            });
-            
+                });// 异步任务结束
+            }
         }else{
             [self.loger LLLog:@"下载地址无效"];
             if(delegate){
