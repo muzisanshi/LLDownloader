@@ -34,7 +34,6 @@
 }
 
 - (IBAction)test:(id)sender {
-//    HttpDownloader *downloader = [[HttpDownloader alloc] init];
     NSString *url = @"http://download.handsight.cn/tvhelper.apk";
     LLDownloadBar *bar = [[LLDownloadBar alloc] initWithFrame:CGRectMake(50, 130, 220, 80)];
     [self.view addSubview:bar];
