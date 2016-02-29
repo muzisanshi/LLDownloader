@@ -182,7 +182,7 @@
                 [[NSFileManager defaultManager] createFileAtPath:self.filePath contents:nil attributes:nil];
                 [self.loger LLLog:[NSString stringWithFormat:@"创建了下载文件：%@",self.filePath]];
             }
-<<<<<<< Updated upstream
+
             
             self.fileOperator = [[LLFileOperator alloc] init];
             
@@ -199,70 +199,6 @@
                 [mutRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
                 // 下面这行代码本来就是异步操作
                 self.connection = [[NSURLConnection alloc] initWithRequest:mutRequest delegate:self];
-=======
-            // 使用同步任务队列，异步任务下载
-            dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0);
-            dispatch_async(globalQueue, ^{
-                
-                LLFileOperator *operator = [[LLFileOperator alloc] init];
-                NSURLResponse *response = nil;
-                NSError *error = nil;
-                
-                // 判断是否是断点下载
-                if (flag) {
-                    [self.loger LLLog:@"当前进行断点下载"];
-                    // 定义请求(默认是GET方法)
-//                    NSMutableURLRequest *mutRequest = [NSMutableURLRequest requestWithURL:url];
-//                    //获取当前文件的大小
-//                    long long fileSize = [operator getFileLength:filePath];
-//                    [mutRequest setHTTPMethod:@"GET"];
-//                    [mutRequest setTimeoutInterval:5];
-//                    [mutRequest setValue:[NSString stringWithFormat:@"bytes=%llu-",fileSize] forHTTPHeaderField:@"Range"];
-//                    [mutRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-                    NSURLRequest *mutRequest = [NSURLRequest requestWithURL:url];
-                    self.connection = [[NSURLConnection alloc] initWithRequest:mutRequest delegate:self];
-                    [self.connection start];
-
-//                    NSData *data1 = [NSURLConnection sendSynchronousRequest:mutRequest returningResponse:&response error:&error];
-//                    
-//                    if (error) {
-//                        [self.loger LLLog:@"断点下载失败"];
-//                        if(delegate){
-//                            [delegate onDownloadError:@"downerror"];
-//                        }
-//
-//                    }else{
-//                        
-//                        [self.loger LLLog:@"断点下载文件结束"];
-//                        long long length1 = [response expectedContentLength];
-//                        [self.loger LLLog:[NSString stringWithFormat:@"断点下载的大小是：%llu",length1]];
-//                        // 把数据写到文件
-//                        if ([operator isSpaceEnough:length1]) {
-//                            FILE *file = fopen([filePath UTF8String], [@"ab+" UTF8String]);
-//                            if(file != NULL){
-//                                [self.loger LLLog:@"打开文件成功"];
-//                                if(fseek(file, 0, SEEK_END) == 0){
-//                                    [self.loger LLLog:@"重置文件指针成功"];
-//                                }else{
-//                                    [self.loger LLLog:@"重置文件指针失败"];
-//                                }
-//                            }
-//                            unsigned long readSize = [data1 length];
-//                            fwrite((const void *)[data1 bytes], readSize, 1, file);
-//                            fclose(file);
-//                            
-//                            NSLog(@"下载后文件的大小是：%llu",[operator getFileLength:filePath]);
-//                            [self.loger LLLog:@"写入数据到文件完毕"];
-//                            if(delegate){
-//                                [delegate onDownloadOver:filePath];
-//                            }
-//                        }else{
-//                            if(delegate){
-//                                [delegate onSpaceNotEnough:@"nenough"];
-//                            }
-//                        }
-//                    }
->>>>>>> Stashed changes
                     
             }else{
                 [self.loger LLLog:@"当前不进行断点下载"];
@@ -313,3 +249,4 @@
     }
 }
 @end
+
